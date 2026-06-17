@@ -128,3 +128,26 @@ export interface HealthProfileData {
   dailyCalorieTarget: number;
 }
 
+
+// Define layout structure for Allergy data
+export interface Allergy {
+  id: string;
+  name: string;
+  type: 'food' | 'medicine' | 'environmental' | 'other';
+  severity: 'low' | 'medium' | 'high';
+  notes: string;
+}
+
+export interface AllergyFromServer {
+    id:number ;
+    name:string;
+    description:string;
+    type:string;
+    userEmail:string
+
+
+}
+
+
+
+

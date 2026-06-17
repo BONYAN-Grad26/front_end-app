@@ -1,3 +1,4 @@
+"use server"
 import { baseUrl } from "@/lib/constants";
 import { HealthData, HealthProfileData, ResponseData } from "@/lib/interfaces";
 import { cookies } from "next/headers";

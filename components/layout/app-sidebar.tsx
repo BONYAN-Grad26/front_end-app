@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { LayoutDashboard, Apple, Dumbbell, User, Settings, LogOut, Leaf, Menu, X } from 'lucide-react';
+import { LayoutDashboard, Apple, Dumbbell, User, Settings, LogOut, Leaf, Menu, X  ,Ban} from 'lucide-react';
 import { useState } from 'react';
 import { logoutUser } from '@/serverActions/auth';
 
@@ -12,6 +12,7 @@ const navItems = [
   { label: 'Workouts', href: '/workouts', icon: Dumbbell },
   { label: 'Profile', href: '/profile', icon: User },
   { label: 'Settings', href: '/settings', icon: Settings },
+  {label :"Alleries", href:'/alleries' , icon: Ban }
 ];
 
 export function AppSidebar() {
