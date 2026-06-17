@@ -1,0 +1,140 @@
+"use server";   
+import { apiClient } from "@/configs/Axios";
+import { HealthData, HealthProfileData, OnboardingData, RegisterUserData, ResponseData } from "@/lib/interfaces";
+import axios from "axios";
+import { cookies } from "next/headers";
+
+
+export const registerUser = async (userData: RegisterUserData) : Promise<ResponseData> =>  {
+    try {
+        const response = await  apiClient.post('/auth/register', userData);
+        return response.data;
+
+    } catch (error) {
+        const errorMessage = axios.isAxiosError(error) ? error.response?.data?.message : null;
+        
+        throw new Error(errorMessage || 'An error occurred during login');
+    }
+}
+export const sendOtp = async (otp:string,email:string) => {
+        const cookieStore = await cookies();
+
+    try {
+        const {data} : {data: ResponseData} = await apiClient.post('/auth/confirm-email', { otp, email });
+        if(!data.success) {
+            throw new Error(data.error.message);
+        }
+        if(!data.data?.accessToken) { 
+            throw new Error("Access token not found in response");
+
+        }
+        cookieStore.set('access_token', data.data?.accessToken,
+            { 
+                maxAge:  calcSeconds(data.data.expiresIn as string), 
+                httpOnly: true,
+                secure: process.env.NODE_ENV === 'production',
+            }
+        ); 
+
+    } catch (error) {
+        console.error("Error during otp:", error);
+
+        const errorMessage = axios.isAxiosError(error) ? error.response?.data?.message : null;
+        
+        throw new Error(errorMessage || 'An error occurred during sending OTP');
+    }
+
+}
+
+export const loginUser = async (email:string,password:string) => {
+    const cookieStore = await cookies();
+    try {
+        const {data} : {data: ResponseData} = await apiClient.post('/auth/login', { email, password });
+        if(!data.success) {
+            throw new Error(data.error.message || 'Login failed');
+        }
+        if(!data.data?.accessToken) {
+            throw new Error("Access token not found in response");
+        }
+        cookieStore.set('access_token', data.data?.accessToken,
+            { 
+                maxAge: calcSeconds(data.data.expiresIn as string),
+                httpOnly: true,
+                secure: process.env.NODE_ENV === 'production',
+            }
+        ); 
+
+        return data.data?.message || 'Login successful!'; // Return the message from the response or a default message
+
+
+    } catch (error) {
+        console.error("Error during login:", error);
+
+        const errorMessage = axios.isAxiosError(error) ? error.response?.data?.message : null;
+        
+        throw new Error(errorMessage || 'An error occurred during login');
+    }
+}
+
+export const logoutUser = async () => {
+    const cookieStore = await cookies();
+    cookieStore.delete('access_token');
+}
+
+export const createHealtheMatrix = async (data:OnboardingData) => {
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get('access_token')?.value ;
+    if(!accessToken) {
+        throw new Error("please register before")
+    }
+
+    try {
+        const healthdata: HealthData = {
+            age: data.age,
+            weightKg: data.weight,
+            heightCm: data.height,
+            muscleMassKg: (data.weight * data.musclePercentage) / 100,
+            fatPercentage: data.fatPercentage,
+            gender: data.gender,
+            activityLevel: data.activityLevel,
+            medicalNotes: data.medicalNotes,
+            dietType: data.dietType,
+            dietGoal: data.dietGoal,
+            targetWeightKg: data.targetWeight,
+            dailyCalorieTarget: data.dailyCalories
+        }
+
+        const resposne = await apiClient.post('/health-profile', healthdata ,{
+            headers:{
+                "Authorization" : `Bearer ${accessToken}`
+            }
+        });
+    
+        const responseData = resposne.data as ResponseData;
+        if(!responseData.success) {
+            throw new Error(responseData.error.message || 'Failed to create health matrix');
+        }
+        return responseData.data as HealthProfileData || null
+
+
+
+    } catch (error) { 
+
+
+
+        const errorMessage = axios.isAxiosError(error) ? error.response?.data?.message : null;
+        
+        throw new Error(errorMessage || 'An error occurred during creating health-matrix');
+    }
+
+}
+
+const calcSeconds = (expires_in: string): number => {
+    const startTime = new Date(expires_in);
+    const endTime = new Date();
+
+    const diffInSeconds = Math.floor(Math.abs((endTime.getTime() - startTime.getTime())) / 1000);
+
+    return diffInSeconds;
+
+}
