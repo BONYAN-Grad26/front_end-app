@@ -11,6 +11,7 @@ interface AllergyCardProps {
   setAllergies: React.Dispatch<React.SetStateAction<Allergy[]>>;
 }
 
+
 export const AllergyCard = ({allergy,setAllergies}:AllergyCardProps) => {
 
 
@@ -19,9 +20,7 @@ export const AllergyCard = ({allergy,setAllergies}:AllergyCardProps) => {
       try {
         await deleteAllergy(id)
         toast.success("Allergy is deleted successfully!")
-        setAllergies((allergies) =>
-          allergies.filter(item => item.id !== id)
-        );
+        setAllergies((allergies) => allergies.filter(item => item.id !== id));
 
       } catch(error:any) {
         toast.error(error.message)

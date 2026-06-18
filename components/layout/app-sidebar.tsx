@@ -2,18 +2,11 @@
 
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { LayoutDashboard, Apple, Dumbbell, User, Settings, LogOut, Leaf, Menu, X  ,Ban} from 'lucide-react';
+import { LogOut, Leaf, Menu, X  } from 'lucide-react';
 import { useState } from 'react';
 import { logoutUser } from '@/serverActions/auth';
+import { navItems } from '@/lib/constants';
 
-const navItems = [
-  { label: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-  { label: 'Meals', href: '/meals', icon: Apple },
-  { label: 'Workouts', href: '/workouts', icon: Dumbbell },
-  { label: 'Profile', href: '/profile', icon: User },
-  { label: 'Settings', href: '/settings', icon: Settings },
-  {label :"Alleries", href:'/alleries' , icon: Ban }
-];
 
 export function AppSidebar() {
   const pathname = usePathname();

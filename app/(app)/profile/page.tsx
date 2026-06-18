@@ -32,7 +32,7 @@ export default async function ProfilePage() {
               <h1 className="text-4xl font-bold text-foreground mb-2">My Profile</h1>
               <p className="text-foreground/60">View and manage your health information</p>
             </div>
-            <EditForm />  
+            <EditForm id={user.id} />  
 
           </div>
         </div>

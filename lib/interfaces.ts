@@ -124,7 +124,7 @@ export interface HealthProfileData {
 
   bodyFatCategory: string | null;
 
-  targetWeightKg: number | null;
+  targetWeightKg: number;
   dailyCalorieTarget: number;
 }
 
