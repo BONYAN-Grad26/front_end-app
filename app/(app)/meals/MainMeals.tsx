@@ -71,7 +71,7 @@ export default function MealsPage({ apiData }: MealPageProps) {
             <div className="space-y-4">
               <h2 className="text-2xl font-bold text-foreground">This Week&apos;s Plan</h2>
 
-              <div className="grid grid-cols-7 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-2">
                 {currentWeek.days.map((day, index) => {
                   const dayTotalCalories = day.meals.reduce((sum, m) => sum + parseDescription(m.description).calories, 0);
                   const isSelected = index === activeDayIndex;

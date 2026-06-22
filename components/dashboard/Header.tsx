@@ -121,7 +121,7 @@ const [loading2, setLoading2] = useState(false);
         <Utensils size={15} />
         {!loading1?"Generate Nutrition":"generating"}
       </button>
-    ) : !workout &&(
+    ) : !workout  && activeTab !== 'nutrition' &&(
       <button 
          disabled={loading2}
         onClick={() => generateWorkoutHandling()}

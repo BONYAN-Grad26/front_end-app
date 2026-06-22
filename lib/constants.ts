@@ -5,6 +5,8 @@ export const baseUrl = process.env.BASE_URL || 'http://localhost:8080/api';
 
 export const machineUrl = process.env.MACHINE_URL || 'https://fitness-part.onrender.com'
 
+export const workoutUrl = process.env.WORKOUT_URL || 'http://localhost:8080/workout-plan'
+
 export const staticAllergies : Allergy[] = [
     { id: '1', name: 'Penicillin', type: 'medicine', severity: 'high', notes: 'Causes severe skin rash and shortness of breath.' },
     { id: '2', name: 'Peanuts', type: 'food', severity: 'high', notes: 'Anaphylaxis risk - requires immediate Epinephrine auto-injector.' },
@@ -196,3 +198,4 @@ export const apiData: ApiMealPlanResponse[] = [
     ]
   }
 ]
+

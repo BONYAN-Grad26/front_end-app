@@ -271,3 +271,36 @@ export interface ApiMealPlanResponse {
   aiPreparationTips: string | null;
   days: DayPlan[];
 }
+export interface Exercise {
+  name: string;
+  sets: number;
+  reps: string; 
+  rest_seconds: number;
+  notes: string;
+}
+
+export interface DaySession {
+  session: string; 
+  focus: string;   
+  exercises: Exercise[]; 
+}
+
+export interface WeeklySchedule {
+  Monday: DaySession;
+  Tuesday: DaySession;
+  Wednesday: DaySession;
+  Thursday: DaySession;
+  Friday: DaySession;
+  Saturday: DaySession;
+  Sunday: DaySession;
+}
+
+export interface PlanData {
+  plan_name: string;
+  split_type: string;
+  split_reasoning: string;
+  weekly_schedule: WeeklySchedule;
+}
+
+
+

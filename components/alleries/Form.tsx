@@ -39,6 +39,11 @@ export const AllergyForm = ({allergies,setAllergies,id,name} : AllergyFormProps)
       return ;
 
     }
+    if(formData.name!=name) {
+      toast.error("please choose from ingredients")
+      router.back()
+      return
+    }
 
     const newAllergy: Allergy = {
       id: Date.now().toString(),
@@ -62,7 +67,7 @@ export const AllergyForm = ({allergies,setAllergies,id,name} : AllergyFormProps)
 
     } finally {
       setLoading(false);
-      setFormData({ name: '', type: AllergenType.CRUSTACEAN, severity: 'low', notes: '' }); // Reset Form
+      setFormData({ name:"", type: AllergenType.CRUSTACEAN, severity: 'low', notes: '' }); // Reset Form
     }
 
 
