@@ -13,17 +13,9 @@ import { MedicalNotesStep } from './steps/medical-notes-step';
 import { AnalysisStep } from './steps/analysis-step';
 import { OnboardingData, Gender, ActivityLevel, DietType, DietGoal } from '@/lib/interfaces';
 import { useSearchParams } from 'next/navigation';
+import { steps } from '@/lib/constants';
 
 
-const steps = [
-  { title: 'Basic Info', description: 'Your measurements' },
-  { title: 'Body Composition', description: 'Muscle & fat %' },
-  { title: 'Lifestyle', description: 'Activity level' },
-  { title: 'Goals', description: 'Your targets' },
-  { title: 'Allergies', description: 'Dietary restrictions' },
-  { title: 'Medical Notes', description: 'Health info' },
-  { title: 'Analysis', description: 'Your AI plan' },
-];
 
 export function OnboardingWizard() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -31,8 +23,8 @@ export function OnboardingWizard() {
   const [data, setData] = useState<OnboardingData>({
     age: 0,
     gender: Gender.MALE,
-    height: 20,
-    weight: 20,
+    height: 0,
+    weight: 0,
     musclePercentage: 0,
     fatPercentage: 0,
     activityLevel: ActivityLevel.LIGHTLY_ACTIVE,

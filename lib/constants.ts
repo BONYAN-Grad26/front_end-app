@@ -199,3 +199,22 @@ export const apiData: ApiMealPlanResponse[] = [
   }
 ]
 
+
+
+
+export const steps = [
+  { title: 'Basic Info', description: 'Your measurements' },
+  { title: 'Body Composition', description: 'Muscle & fat %' },
+  { title: 'Lifestyle', description: 'Activity level' },
+  { title: 'Goals', description: 'Your targets' },
+  { title: 'Allergies', description: 'Dietary restrictions' },
+  { title: 'Medical Notes', description: 'Health info' },
+  { title: 'Analysis', description: 'Your AI plan' },
+];
+
+export const stepsInfo = {
+  "personalInfo":0,
+  "bodyInfo":1,
+  "targetInfo":3,
+  "medicalInfo":5
+}
