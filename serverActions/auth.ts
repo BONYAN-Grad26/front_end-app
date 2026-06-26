@@ -106,7 +106,7 @@ export const createHealtheMatrix = async (data:OnboardingData) => {
         }
         cookieStore.set('access_token', accessToken,
             { 
-                maxAge: 60*60, 
+                maxAge: 60*60*3, 
                 httpOnly: true,
                 secure: process.env.NODE_ENV === 'production',
 
