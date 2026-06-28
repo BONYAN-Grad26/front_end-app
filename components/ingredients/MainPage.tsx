@@ -1,6 +1,6 @@
 "use client";
 
-import { baseUrl } from "@/lib/constants";
+import { baseUrl, insteadImage } from "@/lib/constants";
 import { Allergy, CartItem, Ingredient } from "@/lib/interfaces";
 import { addTocart, modifyCartItem, removeFromCart } from "@/serverActions/cart";
 import Link from "next/link";
@@ -103,7 +103,7 @@ export default function IngredientsPage({ cart, ingredients, currentPage }: Ingr
 
   return (
     <>
-    <DeleteModal isOpen={isOpen} onClose={()=>setIsOpen(false)} loading={removingFromCart.loading} onConfirm={()=> {
+    <DeleteModal message= "Are you sure you want to delete this item from cart ? This action cannot be undone." isOpen={isOpen} onClose={()=>setIsOpen(false)} loading={removingFromCart.loading} onConfirm={()=> {
       if(item) {
         handleRemoveFromCart(item);
       }
@@ -154,12 +154,12 @@ export default function IngredientsPage({ cart, ingredients, currentPage }: Ingr
                   {/* Image Box */}
                   <div className="relative h-56 w-full bg-slate-50 overflow-hidden">
                     <img 
-                      src={ingredient.imageUrl || "https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=500&auto=format&fit=crop"} 
+                      src={ingredient.imageUrl || insteadImage} 
                       alt={ingredient.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                       loading="lazy"
                       onError={(e) => {
-                        (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=500&auto=format&fit=crop";
+                        (e.target as HTMLImageElement).src = insteadImage;
                       }}
                     />
                     

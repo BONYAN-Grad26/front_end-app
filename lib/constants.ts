@@ -24,8 +24,8 @@ export const navItems = [
   { label: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
   { label: 'Meals', href: '/meals', icon: Apple },
   { label: 'Workouts', href: '/workouts', icon: Dumbbell },
-  { label :"ingredients" ,href :"/ingredients?currentPage=1" , icon:Salad},
   {label:"Machine Classifier", href:"/machine-classfier", icon : Workflow},
+  { label :"ingredients" ,href :"/ingredients?currentPage=1" , icon:Salad},
   {label:'Cart',href:"/cart" ,icon:ShoppingCart},
   { label: 'Profile', href: '/profile', icon: User },
   { label: 'Settings', href: '/settings', icon: Settings },
@@ -291,3 +291,5 @@ export const stepsInfo = {
   "targetInfo":3,
   "medicalInfo":5
 }
+
+export const insteadImage =  "https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=500&auto=format&fit=crop"

@@ -161,6 +161,7 @@ export const loginUser = async (email:string,password:string) => {
         throw new Error(errorMessage || 'An error occurred during login');
     }
 }
+
 const calcSeconds = (expires_in:string) => {
  const diff = Math.abs(new Date(expires_in).getTime() - Date.now());
  return Math.floor(diff / 1000);
@@ -204,7 +205,7 @@ export const refreshToken = async()=> {
 
     } catch (error) {
         LogoutWhenStatusEqual401();
-
+        throw error;
     }
 }
 
