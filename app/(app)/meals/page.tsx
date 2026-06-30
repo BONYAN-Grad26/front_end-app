@@ -14,11 +14,9 @@ export const metadata = {
 const WeeklyMealsPage = async () => {
   const apiData = await getWeeklyPlans();
 
-  // حالة عدم وجود خطة أسبوعية مسبقة - تصميم فائق النقاء والمينيماليست
   if (!apiData || !apiData.length) {
     return (
       <div className="w-full min-h-[80vh] flex flex-col justify-center items-center gap-6 p-6">
-        {/* حاوية الأيقونة مع إضاءة وحركة نبضية رقيقة جداً بديلة للإيموجي */}
         <div className="relative p-5 bg-sky-500/5 rounded-2xl border border-sky-500/10 shadow-sm text-sky-500">
           <UtensilsCrossed size={32} className="animate-pulse" />
           <div className="absolute -inset-1 bg-sky-500/5 blur-lg rounded-full pointer-events-none" />
@@ -33,7 +31,6 @@ const WeeklyMealsPage = async () => {
           </p>
         </div>
         
-        {/* زر التوجيه للداشبورد متناسق تماماً مع نظام التصميم */}
         <Link
           href="/dashboard" 
           className={cn(

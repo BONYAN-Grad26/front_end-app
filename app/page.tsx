@@ -30,7 +30,6 @@ export default function Home() {
             {/* Left Column - Text */}
             <div data-aos-delay="200" data-aos="fade-right" className="space-y-8 animate-in fade-in slide-in-from-bottom-5 duration-500">
               <div className="space-y-5">
-                {/* شارة علوية محددة بلون اللوجو اللبني */}
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-sky-500/10 rounded-full border border-sky-500/20">
                   <Zap className="w-3.5 h-3.5 text-sky-400" />
                   <span className="text-xs font-semibold text-sky-400 tracking-wide uppercase">Your AI Health Companion</span>
@@ -48,7 +47,6 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* أزرار تفاعلية متناسقة مع الـ Navbar */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
                   size="lg" 
@@ -87,7 +85,7 @@ export default function Home() {
             </div>
 
             {/* Right Column - Visual Card */}
-            <div data-aos-delay="200" data-aos="fade-left" className="relative h-[400px] sm:h-[500px] rounded-2xl overflow-hidden bg-gradient-to-b from-card to-card/50 border border-sky-500/10 shadow-2xl shadow-sky-500/5 animate-in fade-in zoom-in-95 duration-700">
+            <div className="relative h-[400px] sm:h-[500px] rounded-2xl overflow-hidden bg-gradient-to-b from-card to-card/50 border border-sky-500/40 shadow-2xl shadow-sky-500/5 animate-in fade-in zoom-in-95 duration-700">
               <div className="absolute inset-0 bg-gradient-to-br from-sky-500/5 via-transparent to-sky-400/5 flex items-center justify-center">
                 <div className="text-center space-y-4 p-6">
                   <div className="w-20 h-20 bg-sky-500/10 border border-sky-500/20 rounded-2xl flex items-center justify-center mx-auto shadow-inner">

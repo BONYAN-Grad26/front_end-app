@@ -5,7 +5,10 @@ import { getIngredients } from '@/serverActions/ingredients';
 interface PageProps {
     searchParams:Promise<{currentPage:string}>
 }
-
+export const metadata = {
+  title: 'Ingredient - Bonyan',
+  description: 'View and manage your favorite ingredients',
+};
 const page = async ({searchParams}:PageProps) => {
     const {currentPage} = await searchParams;
     if(!currentPage) {

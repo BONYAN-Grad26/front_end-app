@@ -8,7 +8,10 @@ import { Allergy } from '@/lib/interfaces';
 import { getAllAllergies } from '@/serverActions/allergy';
 import { getUserProfile } from '@/serverActions/profile';
 import { User, Heart, Target, AlertCircle } from 'lucide-react';
-
+export const metadata = {
+  title: 'profile - Bonyan',
+  description: 'View and manage your profile information',
+};
 export default async function ProfilePage() {
   
   const user = profile; 

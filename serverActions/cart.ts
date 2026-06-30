@@ -53,7 +53,7 @@ export const getCart = async() : Promise<CartItem[]>=>  {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${accessToken}`
             },
-            cache:"no-cache",
+            cache:"force-cache",
             next: { tags: ['cart','commen-tag'] } // Optional: for caching and revalidation
             
         });
@@ -81,7 +81,6 @@ export const modifyCartItem = async(cartId:number,quantity:number) => {
         if(!accessToken) {
             throw new Error("Access token not found");
         }
-        console.log({cartId,quantity})
 
         const response = await apiClient.patch(`${baseUrl}/cart/${cartId}?quantity=${quantity}`,null,{
             headers:{

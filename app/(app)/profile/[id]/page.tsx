@@ -5,7 +5,10 @@ import { getUserProfile } from "@/serverActions/profile";
 interface EditHealthProfileProps {
     params: Promise<{ id: string }>
 }
-
+export const metadata = {
+  title: 'profile - Bonyan',
+  description: 'View and manage your profile information',
+};
 export default async function EditHealthProfile({ params }: EditHealthProfileProps) {
     const { id } = await params;
     const user = profile;
