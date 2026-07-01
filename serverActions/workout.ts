@@ -2,7 +2,7 @@
 import { baseUrl, workoutUrl } from "@/lib/constants";
 import { PlanData, ResponseData } from "@/lib/interfaces";
 import { cookies } from "next/headers";
-import { LogoutWhenStatusEqual401, refreshToken, refreshTokenAndRedirct } from "./auth";
+import { logoutInserverComponent, logoutUser, LogoutWhenStatusEqual401, refreshToken, refreshTokenAndRedirct } from "./auth";
 import { redirect } from "next/navigation";
 import { updateTag } from "next/cache";
 
@@ -24,10 +24,10 @@ export const getWeeklyWorkout = async()=> {
         next:{tags:['workout-plans','commen-tag']}
 
     });
-    if(response.status===401) {
-        //await refreshTokenAndRedirct("/workout")
+        if(response.status===401) {
 
-    }
+           // await  logoutInserverComponent()
+        }
     if(response.status===404) {
         return null
     }

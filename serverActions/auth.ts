@@ -228,5 +228,9 @@ export const refreshTokenAndRedirct = async(path:string)=> {
     revalidatePath(path)
     redirect(path)
     
-
+}
+export const logoutInserverComponent = async() => {
+    await fetch("http://localhost:3000/api/logout", {
+    method:"POST"
+    })
 }

@@ -17,7 +17,11 @@ export default async function AllergiesPage({searchParams}:AllergiesPageProps) {
   }
   
 
-  const allergies = await getAllAllergies() ;
+  const allergiesResult = await getAllAllergies();
+  if (typeof allergiesResult === 'object' && 'message' in allergiesResult) {
+    throw new Error(allergiesResult.message);
+  }
+  const allergies = allergiesResult;
 
 
 

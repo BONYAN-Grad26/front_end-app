@@ -5,8 +5,8 @@ import { CartItem, Ingredient, ResponseData } from "@/lib/interfaces";
 import axios from "axios";
 import { updateTag } from "next/cache";
 import { cookies } from "next/headers";
-import { refreshToken, refreshTokenAndRedirct } from "./auth";
-import { redirect } from "next/navigation";
+import { logoutInserverComponent } from "./auth";
+
 
 
 export const addTocart = async(ingredient:Ingredient)=> {
@@ -59,7 +59,7 @@ export const getCart = async() : Promise<CartItem[]>=>  {
         });
         if(response.status===401) {
 
-            //await refreshTokenAndRedirct("/cart")
+            //await  logoutInserverComponent()
         }
         if(response.status === 404) {
             return []

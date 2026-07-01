@@ -71,7 +71,7 @@ export default function Home() {
                   {[1, 2, 3, 4].map((i) => (
                     <div
                       key={i}
-                      className="w-10 h-10 rounded-full bg-gradient-to-b from-sky-400 to-sky-500 border-2 border-background flex items-center justify-center text-white text-xs font-bold shadow-sm"
+                      className="w-10 h-10 rounded-full bg-linear-to-b from-sky-400 to-sky-500 border-2 border-background flex items-center justify-center text-white text-xs font-bold shadow-sm"
                     >
                       {i}K
                     </div>
@@ -85,8 +85,8 @@ export default function Home() {
             </div>
 
             {/* Right Column - Visual Card */}
-            <div className="relative h-[400px] sm:h-[500px] rounded-2xl overflow-hidden bg-gradient-to-b from-card to-card/50 border border-sky-500/40 shadow-2xl shadow-sky-500/5 animate-in fade-in zoom-in-95 duration-700">
-              <div className="absolute inset-0 bg-gradient-to-br from-sky-500/5 via-transparent to-sky-400/5 flex items-center justify-center">
+            <div className="relative h-100 sm:h-125 rounded-2xl overflow-hidden bg-linear-to-b from-card to-card/50 border border-sky-500/40 shadow-2xl shadow-sky-500/5 animate-in fade-in zoom-in-95 duration-700">
+              <div className="absolute inset-0 bg-linear-to-br from-sky-500/5 via-transparent to-sky-400/5 flex items-center justify-center">
                 <div className="text-center space-y-4 p-6">
                   <div className="w-20 h-20 bg-sky-500/10 border border-sky-500/20 rounded-2xl flex items-center justify-center mx-auto shadow-inner">
                     <Brain className="w-10 h-10 text-sky-400 animate-pulse" />

@@ -86,9 +86,10 @@ export const AllergyForm = ({allergies,setAllergies,id,name} : AllergyFormProps)
                   value={name}
                   readOnly
                   //onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
+                  className="w-full px-4 py-2.5 select-none cursor-no-drop bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
                 />
               </div>
+              
 
               {/* Allergy Type Selector */}
               <div>

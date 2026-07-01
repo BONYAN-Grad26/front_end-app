@@ -5,7 +5,7 @@ import { NutritionData, ResponseData, WorkoutData } from "@/lib/interfaces";
 import axios from "axios";
 import { revalidateTag, updateTag } from "next/cache";
 import { cookies, headers } from "next/headers";
-import { LogoutWhenStatusEqual401, refreshToken, refreshTokenAndRedirct } from "./auth";
+import { logoutInserverComponent, logoutUser, LogoutWhenStatusEqual401, refreshToken, refreshTokenAndRedirct } from "./auth";
 import { redirect } from "next/navigation";
 
 
@@ -28,11 +28,10 @@ export const getNutrition = async () => {
         }
             
     });
-    if(response.status===401) {
+        if(response.status===401) {
 
-        //await refreshTokenAndRedirct("/dashboard")
-        
-    }
+            //await  logoutInserverComponent()
+        }
     if(response.status===404) {
         return null
     }  
@@ -102,10 +101,8 @@ export const getWorkout = async () => {
         }
             
     });
-    if(response.status===401) {
-        //await refreshTokenAndRedirct("/dashboard")
+        //await  logoutInserverComponent()
 
-    }
     if(response.status===404) {
         return null
     }  

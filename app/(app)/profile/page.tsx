@@ -2,10 +2,9 @@ import { Account } from '@/components/profile/Account';
 import { EditForm } from '@/components/profile/EditForm';
 import { PrivacySettings } from '@/components/profile/PrivacySettings';
 import { UpdateForm } from '@/components/profile/UpdateForm';
-import { Button } from '@/components/ui/button';
-import { profile } from '@/lib/constants';
+
 import { Allergy } from '@/lib/interfaces';
-import { getAllAllergies } from '@/serverActions/allergy';
+import { getAllergies } from '@/serverActions/allergy';
 import { getUserProfile } from '@/serverActions/profile';
 import { User, Heart, Target, AlertCircle } from 'lucide-react';
 export const metadata = {
@@ -14,8 +13,8 @@ export const metadata = {
 };
 export default async function ProfilePage() {
   
-  const user = profile; 
-  const alleries: Allergy[] =[];
+  const user = await getUserProfile(); 
+  const alleries = await getAllergies();
   if (!user) {
     return (
       <div className="min-h-screen flex items-center justify-center text-foreground antialiased">

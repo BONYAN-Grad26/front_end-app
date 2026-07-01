@@ -26,13 +26,11 @@ const Instead = () => {
     <div className="min-h-[80vh] flex flex-col items-center justify-center p-6 text-center antialiased">
       <div className="bg-card border border-sky-500/5 rounded-3xl p-8 max-w-md shadow-xs space-y-6 flex flex-col items-center transition-all duration-300 hover:border-sky-500/10">
         
-        {/* حاوية الأيقونة - نفس التصميم الموحد المينيماليست الفخم */}
         <div className="relative p-5 bg-sky-500/5 rounded-2xl border border-sky-500/10 shadow-xs text-sky-500 shrink-0">
           <Dumbbell size={28} className="animate-pulse" />
           <div className="absolute -inset-1 bg-sky-500/5 blur-lg rounded-full pointer-events-none" />
         </div>
 
-        {/* النصوص بعد تكبير الخطوط وتحسين تباينها البصري */}
         <div className="space-y-2.5 select-none">
           <h1 className="text-2xl sm:text-3xl font-black text-foreground/90 tracking-tight">
             No Active Workout Plan
@@ -42,7 +40,6 @@ const Instead = () => {
           </p>
         </div>
 
-        {/* الزر الرئيسي المتناسق مع نظام تصميم Bonyan */}
         <Link href="/dashboard" passHref className="w-full">
           <Button 
             onClick={() => generationHandle()} 

@@ -14,7 +14,7 @@ interface ClientAllergyProps {
 
 const ClientAllergy = ({allergies2,id,name}:ClientAllergyProps) => {
 
-    const [allergies, setAllergies] = useState<Allergy[]>(allergies2);
+  const [allergies, setAllergies] = useState<Allergy[]>(allergies2);
   return (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           

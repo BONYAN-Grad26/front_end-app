@@ -5,7 +5,7 @@ import { AllergenType, Allergy, AllergyFromServer, ResponseData } from "@/lib/in
 import axios from "axios";
 import { revalidateTag, updateTag } from "next/cache";
 import { cookies} from "next/headers";
-import { LogoutWhenStatusEqual401, refreshToken, refreshTokenAndRedirct } from "./auth";
+import { logoutInserverComponent, logoutUser, LogoutWhenStatusEqual401, refreshToken, refreshTokenAndRedirct } from "./auth";
 import { redirect } from "next/navigation";
 
 
@@ -63,7 +63,7 @@ export const createAllergy = async(allergy:Allergy,id:string) => {
 
 }
 
-export const getAllAllergies= async() : Promise<Allergy[] | {message:string}> => {
+export const getAllergies= async() : Promise<Allergy[]> => {
     const cookieStore = await cookies();
     const accessToken = cookieStore.get('access_token')?.value;
 
@@ -80,7 +80,10 @@ export const getAllAllergies= async() : Promise<Allergy[] | {message:string}> =>
             next: { tags: ['allergies','commen-tag'] } // Optional: for caching and revalidation
             
         }) ;
+        if(response.status===401) {
 
+            //await  logoutInserverComponent()
+        }
         if(response.status===404) {
             return [];
         }
