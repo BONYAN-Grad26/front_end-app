@@ -11,7 +11,7 @@ export const metadata = {
 };
 export default async function EditHealthProfile({ params }: EditHealthProfileProps) {
     const { id } = await params;
-    const user = profile;
+    const user =  await getUserProfile();
     if (!user) {
       throw new Error('user is not found');
     }
